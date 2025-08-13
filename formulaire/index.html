@@ -5,108 +5,231 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Devenez Coach Beta-Testeur</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #e0e7ff, #f9fafb);
-      display: flex; justify-content: center; align-items: center;
-      min-height: 100vh; padding: 20px; color: #2e3a59;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      color: #2e3a59;
     }
     .container {
-      background: #fff; max-width: 520px; width: 100%;
-      padding: 40px 35px; border-radius: 0;
+      background: #fff;
+      max-width: 520px;
+      width: 100%;
+      padding: 40px 35px;
+      border-radius: 0px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
       animation: appear 0.6s ease forwards;
     }
-    @keyframes appear { from {opacity: 0; transform: translateY(25px);} to {opacity: 1; transform: translateY(0);} }
-
-    h1 { font-weight: 700; font-size: 2rem; margin-bottom: 15px; color: #1a202c; text-align: center; line-height: 1.3; }
-    p.description { color: #4a5568; font-size: 1rem; margin-bottom: 25px; text-align: center; line-height: 1.5; }
-
-    /* Step counter */
-    #step-counter {
-      text-align: center; font-size: 0.9rem; font-weight: 500; color: #718096;
+    @keyframes appear {
+      from {opacity: 0; transform: translateY(25px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    h1 {
+      font-weight: 700;
+      font-size: 2rem;
       margin-bottom: 15px;
+      color: #1a202c;
+      text-align: center;
+      line-height: 1.3;
+    }
+    p.description {
+      color: #4a5568;
+      font-size: 1rem;
+      margin-bottom: 35px;
+      text-align: center;
+      line-height: 1.5;
     }
 
     /* Progress bar */
-    .progressbar { display: flex; justify-content: space-between; counter-reset: step; margin-bottom: 25px; gap: 8px; }
+    .progressbar {
+      display: flex;
+      justify-content: space-between;
+      counter-reset: step;
+      margin-bottom: 35px;
+      gap: 8px;
+    }
     .progressbar li {
-      list-style: none; flex: 1; text-align: center; font-size: 0.75rem; position: relative;
+      list-style: none;
+      flex: 1;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #a0aec0;
+      /* font-weight: 600; */
+      position: relative;
     }
     .progressbar li::before {
-      counter-increment: step; content: counter(step);
-      width: 36px; height: 36px; line-height: 36px;
-      border: 1px solid #cbd5e0; display: block; margin: 0 auto 8px;
-      border-radius: 50%; background: #f7fafc; color: #cbd5e0; font-weight: 700;
+      counter-increment: step;
+      content: counter(step);
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      border: 1px solid #cbd5e0;
+      display: block;
+      margin: 0 auto 8px;
+      border-radius: 50%;
+      background: #f7fafc;
+      color: #cbd5e0;
+      font-weight: 700;
       transition: all 0.3s ease;
     }
     .progressbar li::after {
-      content: ''; position: absolute; width: 100%; height: 2px; background: #cbd5e0;
-      top: 18px; left: -50%; z-index: -1;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #cbd5e0;
+      top: 18px;
+      left: -50%;
+      z-index: -1;
     }
     .progressbar li:first-child::after { content: none; }
-    .progressbar li.completed { color: #2563eb; }
-    .progressbar li.completed::before { border-color: #2563eb; background: #2563eb; color: white; }
-    .progressbar li.active { color: #2563eb; font-weight: 600; }
-    .progressbar li.active::before { border-color: #2563eb; background: #2563eb; color: white; }
+    .progressbar li.active { color: #2563eb; }
+    .progressbar li.active::before {
+      border-color: #2563eb;
+      background: #2563eb;
+      color: white;
+      /* box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); */
+    }
+    .progressbar li.active + li::after {
+      background: #2563eb;
+    }
 
     /* Form fields */
-    #form-fields { display: flex; flex-direction: column; gap: 20px; }
-    .form-group { position: relative; }
+    #form-fields {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .form-group {
+      position: relative;
+    }
     label {
-      position: absolute; top: 14px; left: 16px; font-size: 1rem; color: #718096;
-      pointer-events: none; transition: 0.2s ease all;
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      font-size: 1rem;
+      color: #718096;
+      pointer-events: none;
+      transition: 0.2s ease all;
     }
-    input, textarea {
-      width: 100%; padding: 14px 16px; border: 1px solid #e2e8f0;
-      border-radius: 0; font-size: 1rem; line-height: 1.4;
-      background: #fafafa; color: #2d3748;
-      transition: border-color 0.3s ease;
+    input,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #e2e8f0;
+      border-radius: 0px;
+      font-size: 1rem;
+      background: #fafafa;
+      color: #2d3748;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    input:focus, textarea:focus {
-      border-color: #2563eb; background: #fff;
+    input:focus,
+    textarea:focus {
+      border-color: #2563eb;
+      /* box-shadow: 0 0 8px rgba(37, 99, 235, 0.3); */
+      background: #fff;
     }
-    input:focus + label, input:not(:placeholder-shown) + label,
-    textarea:focus + label, textarea:not(:placeholder-shown) + label {
-      top: -8px; left: 12px; font-size: 0.85rem; color: #2563eb; background: white; padding: 0 4px;
+    input:focus + label,
+    input:not(:placeholder-shown) + label,
+    textarea:focus + label,
+    textarea:not(:placeholder-shown) + label {
+      top: -8px;
+      left: 12px;
+      font-size: 0.85rem;
+      color: #2563eb;
+      background: white;
+      padding: 0 4px;
     }
 
     /* Buttons */
-    .buttons { display: flex; justify-content: space-between; margin-top: 30px; gap: 15px; flex-wrap: wrap; }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
     button {
-      flex: 1 1 45%; background: #2563eb; border: none; color: white;
-      padding: 14px; font-weight: 700; font-size: 1rem; border-radius: 0; cursor: pointer;
+      flex: 1 1 45%;
+      background: #2563eb;
+      border: none;
+      color: white;
+      padding: 14px;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 0px;
+      cursor: pointer;
+      /* box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); */
       transition: background 0.3s ease, transform 0.2s ease;
     }
-    button:hover:not(:disabled) { background: #1e4ed8; transform: translateY(-2px); }
-    button:disabled { background: #a0aec0; cursor: not-allowed; }
+    button:hover:not(:disabled) {
+      background: #1e4ed8;
+      transform: translateY(-2px);
+    }
+    button:disabled {
+      background: #a0aec0;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
 
-    /* Error */
-    .error { color: #dc2626; font-size: 0.9rem; text-align: center; min-height: 20px; font-weight: 500; }
+    /* Error message */
+    .error {
+      color: #dc2626;
+      font-size: 0.9rem;
+      text-align: center;
+      min-height: 20px;
+      font-weight: 500;
+    }
 
-    /* Final message */
+    /* Final screen */
     .final-message {
-      text-align: center; padding: 30px 20px; display: none;
-      flex-direction: column; align-items: center;
-      animation: scaleFade 0.5s ease forwards;
+      text-align: center;
+      padding: 30px 20px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: appear 0.5s ease forwards;
     }
-    @keyframes scaleFade {
-      from {opacity: 0; transform: scale(0.9);}
-      to {opacity: 1; transform: scale(1);}
+    .final-message .icon {
+      font-size: 3rem;
+      color: #16a34a;
+      margin-bottom: 15px;
     }
-    .final-message .icon { font-size: 3rem; color: #16a34a; margin-bottom: 15px; }
-    .final-message h2 { font-size: 1.5rem; margin-bottom: 10px; color: #1a202c; }
-    .final-message p { color: #4a5568; font-size: 1rem; margin-bottom: 20px; line-height: 1.5; }
+    .final-message h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #1a202c;
+    }
+    .final-message p {
+      color: #4a5568;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
     .final-message a {
-      display: inline-block; background: #2563eb; color: #fff;
-      padding: 12px 20px; border-radius: 0; font-weight: 600; text-decoration: none;
+      display: inline-block;
+      background: #2563eb;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 0px;
+      font-weight: 600;
+      text-decoration: none;
       transition: background 0.3s ease;
     }
-    .final-message a:hover { background: #1e4ed8; }
+    .final-message a:hover {
+      background: #1e4ed8;
+    }
 
     @media (max-width: 480px) {
-      label { font-size: 1.05rem; }
       .buttons { flex-direction: column; }
       button { flex: 1 1 100%; }
     }
@@ -118,10 +241,9 @@
     <h1>Participez à la création de l’outil parfait pour les coachs</h1>
     <p class="description">
       Vous êtes coach ? Votre avis peut façonner un outil SaaS pensé sur mesure pour votre métier.<br>
-      Répondez à quelques questions rapides et recevez un accès anticipé + 3 mois gratuits à la version finale.
+      Répondez à 4 questions rapides et recevez un accès anticipé + 3 mois gratuits à la version finale.
     </p>
 
-    <div id="step-counter"></div>
     <ul class="progressbar" id="progressbar"></ul>
 
     <form id="multiStepForm" novalidate>
@@ -139,132 +261,133 @@
     <h2>Merci pour votre participation !</h2>
     <p>Votre avis est précieux et contribuera directement à façonner un outil SaaS qui répond à vos besoins.  
     Nous vous recontacterons très bientôt avec la suite.</p>
-    <a href="#">Découvrir la suite</a>
+    <a href="#">Retour à l'accueil</a>
   </div>
 
 <script>
 const stepsData = [
   { title: "Informations personnelles", fields: [
-    {type: "text", label:"Nom", name:"fullname", required:true},
-    {type: "email", label:"Email", name:"email", required:true}
+    {type: "text", placeholder : '', label:"Nom", name:"fullname", required:true},
+    {type: "email", placeholder : '', label:"Email", name:"email", required:true}
   ]},
   { title: "Votre activité", fields: [
-    {type: "text", label:"Coaching", name:"activity", required:true},
-    {type: "text", label:"Expérience (années)", name:"experience", required:true}
+    {type: "text", placeholder : '', label:"Coaching", name:"activity", required:true},
+    {type: "text", placeholder : '', label:"Expérience (années)", name:"experience", required:true}
   ]},
   { title: "Organisation & besoins", fields: [
-    {type: "text", label:"Clients", name:"clients", required:true},
-    {type: "textarea", label:"Pertes de temps", name:"pain_points", required:true},
-    {type: "textarea", label:"Fonctionnalités", name:"features_wanted", required:false}
+    {type: "text", placeholder : '', label:"Clients", name:"clients", required:true},
+    {type: "textarea", placeholder : '', label:"Pertes de temps", name:"pain_points", required:true},
+    {type: "textarea", placeholder : '', label:"Fonctionnalités", name:"features_wanted", required:false}
   ]},
   { title: "Intérêt pour le SaaS", fields: [
-    {type: "text", label:"Prêt à utiliser ?", name:"interest", required:true},
-    {type: "text", label:"Budget (€)", name:"budget", required:true},
-    {type: "textarea", label:"Déclencheur", name:"conversion_trigger", required:false}
+    {type: "text", placeholder : '', label:"Prêt à utiliser ?", name:"interest", required:true},
+    {type: "text", placeholder : '', label:"Budget (€)", name:"budget", required:true},
+    {type: "textarea", placeholder : '', label:"Déclencheur", name:"conversion_trigger", required:false}
   ]},
 ];
 
-let currentStep = 0;
-const progressbar = document.getElementById('progressbar');
-const stepCounter = document.getElementById('step-counter');
-const formFields = document.getElementById('form-fields');
-const errorMsg = document.getElementById('error-msg');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const formContainer = document.getElementById('form-container');
-const finalMessage = document.getElementById('final-message');
 
-function renderProgressbar() {
-  progressbar.innerHTML = '';
-  stepsData.forEach((step, i) => {
-    const li = document.createElement('li');
-    li.textContent = step.title;
-    if (i < currentStep) li.classList.add('completed');
-    if (i === currentStep) li.classList.add('active');
-    progressbar.appendChild(li);
-  });
-  stepCounter.textContent = `Étape ${currentStep + 1} sur ${stepsData.length}`;
-}
 
-function renderFields() {
-  formFields.innerHTML = '';
-  const fields = stepsData[currentStep].fields;
-  fields.forEach(f => {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('form-group');
+  let currentStep = 0;
+  const progressbar = document.getElementById('progressbar');
+  const formFields = document.getElementById('form-fields');
+  const errorMsg = document.getElementById('error-msg');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const formContainer = document.getElementById('form-container');
+  const finalMessage = document.getElementById('final-message');
 
-    let fieldElem;
-    if(f.type === 'text' || f.type === 'email') {
-      fieldElem = document.createElement('input');
-      fieldElem.type = f.type;
-      fieldElem.name = f.name;
-      if(f.required) fieldElem.required = true;
-    } else if(f.type === 'textarea') {
-      fieldElem = document.createElement('textarea');
-      fieldElem.name = f.name;
-    }
+  function renderProgressbar() {
+    progressbar.innerHTML = '';
+    stepsData.forEach((step, i) => {
+      const li = document.createElement('li');
+      li.textContent = step.title;
+      li.classList.toggle('active', i <= currentStep);
+      progressbar.appendChild(li);
+    });
+  }
 
-    const label = document.createElement('label');
-    label.textContent = f.label;
-    label.htmlFor = f.name;
+  function renderFields() {
+    formFields.innerHTML = '';
+    const fields = stepsData[currentStep].fields;
+    fields.forEach(f => {
+      const wrapper = document.createElement('div');
+      wrapper.classList.add('form-group');
 
-    wrapper.appendChild(fieldElem);
-    wrapper.appendChild(label);
-    formFields.appendChild(wrapper);
-  });
-  errorMsg.textContent = '';
-}
+      let fieldElem;
+      if(f.type === 'text' || f.type === 'email') {
+        fieldElem = document.createElement('input');
+        fieldElem.type = f.type;
+        fieldElem.placeholder = f.placeholder;
+        fieldElem.name = f.name;
+        if(f.required) fieldElem.required = true;
+      } else if(f.type === 'textarea') {
+        fieldElem = document.createElement('textarea');
+        fieldElem.placeholder = f.placeholder;
+        fieldElem.name = f.name;
+      }
 
-function validateStep() {
-  const inputs = formFields.querySelectorAll('input, textarea');
-  for(let input of inputs) {
-    if(input.required && !input.value.trim()) {
-      errorMsg.textContent = `Veuillez remplir le champ "${input.nextElementSibling.textContent}".`;
-      return false;
-    }
-    if(input.type === 'email' && input.value.trim()) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!re.test(input.value.trim())) {
-        errorMsg.textContent = "Veuillez saisir une adresse email valide.";
+      const label = document.createElement('label');
+      label.textContent = f.label;
+      label.htmlFor = f.name;
+
+      wrapper.appendChild(fieldElem);
+      wrapper.appendChild(label);
+      formFields.appendChild(wrapper);
+    });
+    errorMsg.textContent = '';
+  }
+
+  function validateStep() {
+    const inputs = formFields.querySelectorAll('input, textarea');
+    for(let input of inputs) {
+      if(input.required && !input.value.trim()) {
+        errorMsg.textContent = `Veuillez remplir le champ ${input.nextElementSibling.textContent}` 
         return false;
       }
+      if(input.type === 'email' && input.value.trim()) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!re.test(input.value.trim())) {
+          errorMsg.textContent = "Veuillez saisir une adresse email valide.";
+          return false;
+        }
+      }
     }
+    errorMsg.textContent = '';
+    return true;
   }
-  errorMsg.textContent = '';
-  return true;
-}
 
-nextBtn.addEventListener('click', () => {
-  if(!validateStep()) return;
-  if(currentStep < stepsData.length - 1) {
-    currentStep++;
-    renderProgressbar();
-    renderFields();
-    prevBtn.disabled = false;
-    if(currentStep === stepsData.length - 1) {
-      nextBtn.textContent = 'Terminer ✅';
+  nextBtn.addEventListener('click', () => {
+    if(!validateStep()) return;
+    if(currentStep < stepsData.length - 1) {
+      currentStep++;
+      renderProgressbar();
+      renderFields();
+      prevBtn.disabled = false;
+      if(currentStep === stepsData.length - 1) {
+        nextBtn.textContent = 'Terminer ✅';
+      } else {
+        nextBtn.textContent = 'Suivant ➡';
+      }
     } else {
-      nextBtn.textContent = 'Suivant ➡';
+      formContainer.style.display = 'none';
+      finalMessage.style.display = 'flex';
     }
-  } else {
-    formContainer.style.display = 'none';
-    finalMessage.style.display = 'flex';
-  }
-});
+  });
 
-prevBtn.addEventListener('click', () => {
-  if(currentStep > 0) {
-    currentStep--;
-    renderProgressbar();
-    renderFields();
-    nextBtn.disabled = false;
-    nextBtn.textContent = 'Suivant ➡';
-    if(currentStep === 0) prevBtn.disabled = true;
-  }
-});
+  prevBtn.addEventListener('click', () => {
+    if(currentStep > 0) {
+      currentStep--;
+      renderProgressbar();
+      renderFields();
+      nextBtn.disabled = false;
+      nextBtn.textContent = 'Suivant ➡';
+      if(currentStep === 0) prevBtn.disabled = true;
+    }
+  });
 
-renderProgressbar();
-renderFields();
+  renderProgressbar();
+  renderFields();
 </script>
 
 </body>
