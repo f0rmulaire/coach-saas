@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Devenez Coach Beta-Testeur</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(135deg, #e0e7ff, #f9fafb);
@@ -35,7 +31,7 @@
     }
     h1 {
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: 15px;
       color: #1a202c;
       text-align: center;
@@ -61,17 +57,17 @@
       list-style: none;
       flex: 1;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: #a0aec0;
-      /* font-weight: 600; */
       position: relative;
+      word-wrap: break-word;
     }
     .progressbar li::before {
       counter-increment: step;
       content: counter(step);
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
       border: 1px solid #cbd5e0;
       display: block;
       margin: 0 auto 8px;
@@ -87,7 +83,7 @@
       width: 100%;
       height: 2px;
       background: #cbd5e0;
-      top: 18px;
+      top: 16px;
       left: -50%;
       z-index: -1;
     }
@@ -97,7 +93,6 @@
       border-color: #2563eb;
       background: #2563eb;
       color: white;
-      /* box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4); */
     }
     .progressbar li.active + li::after {
       background: #2563eb;
@@ -107,11 +102,9 @@
     #form-fields {
       display: flex;
       flex-direction: column;
-      gap: 22px;
+      gap: 20px;
     }
-    .form-group {
-      position: relative;
-    }
+    .form-group { position: relative; }
     label {
       position: absolute;
       top: 14px;
@@ -121,8 +114,7 @@
       pointer-events: none;
       transition: 0.2s ease all;
     }
-    input,
-    textarea {
+    input, textarea {
       width: 100%;
       padding: 14px 16px;
       border: 1px solid #e2e8f0;
@@ -130,12 +122,11 @@
       font-size: 1rem;
       background: #fafafa;
       color: #2d3748;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      line-height: 1.4;
     }
-    input:focus,
-    textarea:focus {
+    input:focus, textarea:focus {
       border-color: #2563eb;
-      /* box-shadow: 0 0 8px rgba(37, 99, 235, 0.3); */
       background: #fff;
     }
     input:focus + label,
@@ -163,12 +154,11 @@
       background: #2563eb;
       border: none;
       color: white;
-      padding: 14px;
+      padding: 16px;
       font-weight: 700;
       font-size: 1rem;
       border-radius: 0px;
       cursor: pointer;
-      /* box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); */
       transition: background 0.3s ease, transform 0.2s ease;
     }
     button:hover:not(:disabled) {
@@ -225,11 +215,13 @@
       text-decoration: none;
       transition: background 0.3s ease;
     }
-    .final-message a:hover {
-      background: #1e4ed8;
-    }
+    .final-message a:hover { background: #1e4ed8; }
 
+    /* Mobile */
     @media (max-width: 480px) {
+      body { background: #fff; padding: 10px; }
+      .container { box-shadow: none; padding: 25px 20px; }
+      h1 { font-size: 1.4rem; }
       .buttons { flex-direction: column; }
       button { flex: 1 1 100%; }
     }
@@ -237,157 +229,156 @@
 </head>
 <body>
 
-  <div class="container" id="form-container">
-    <h1>Participez à la création de l’outil parfait pour les coachs</h1>
-    <p class="description">
-      Vous êtes coach ? Votre avis peut façonner un outil SaaS pensé sur mesure pour votre métier.<br>
-      Répondez à 4 questions rapides et recevez un accès anticipé + 3 mois gratuits à la version finale.
-    </p>
+<div class="container" id="form-container">
+  <h1>Participez à la création de l’outil parfait pour les coachs</h1>
+  <p class="description">
+    Vous êtes coach ? Votre avis peut façonner un outil SaaS pensé sur mesure pour votre métier.<br>
+    Répondez à 4 questions rapides et recevez un accès anticipé + 3 mois gratuits à la version finale.
+  </p>
 
-    <ul class="progressbar" id="progressbar"></ul>
+  <ul class="progressbar" id="progressbar"></ul>
 
-    <form id="multiStepForm" novalidate>
-      <div id="form-fields"></div>
-      <div class="error" id="error-msg"></div>
-      <div class="buttons">
-        <button type="button" id="prev-btn" disabled>⬅ Précédent</button>
-        <button type="button" id="next-btn">Suivant ➡</button>
-      </div>
-    </form>
-  </div>
+  <form id="multiStepForm" novalidate>
+    <div id="form-fields"></div>
+    <div class="error" id="error-msg"></div>
+    <div class="buttons">
+      <button type="button" id="prev-btn" disabled>⬅ Précédent</button>
+      <button type="button" id="next-btn">Suivant ➡</button>
+    </div>
+  </form>
+</div>
 
-  <div class="container final-message" id="final-message">
-    <div class="icon">✅</div>
-    <h2>Merci pour votre participation !</h2>
-    <p>Votre avis est précieux et contribuera directement à façonner un outil SaaS qui répond à vos besoins.  
-    Nous vous recontacterons très bientôt avec la suite.</p>
-    <a href="#">Retour à l'accueil</a>
-  </div>
+<div class="container final-message" id="final-message">
+  <div class="icon">✅</div>
+  <h2>Merci pour votre participation !</h2>
+  <p>Votre avis est précieux et contribuera directement à façonner un outil SaaS qui répond à vos besoins.<br>
+  Nous vous recontacterons très bientôt avec la suite.</p>
+  <a href="#">Retour à l'accueil</a>
+</div>
 
 <script>
 const stepsData = [
-  { title: "Informations personnelles", fields: [
-    {type: "text", placeholder : '', label:"Nom", name:"fullname", required:true},
-    {type: "email", placeholder : '', label:"Email", name:"email", required:true}
+  { title: "Infos perso", fields: [
+    {type: "text", label:"Nom", name:"fullname", required:true},
+    {type: "email", label:"Email", name:"email", required:true}
   ]},
-  { title: "Votre activité", fields: [
-    {type: "text", placeholder : '', label:"Coaching", name:"activity", required:true},
-    {type: "text", placeholder : '', label:"Expérience (années)", name:"experience", required:true}
+  { title: "Activité", fields: [
+    {type: "text", label:"Coaching", name:"activity", required:true},
+    {type: "text", label:"Expérience", name:"experience", required:true}
   ]},
-  { title: "Organisation & besoins", fields: [
-    {type: "text", placeholder : '', label:"Clients", name:"clients", required:true},
-    {type: "textarea", placeholder : '', label:"Pertes de temps", name:"pain_points", required:true},
-    {type: "textarea", placeholder : '', label:"Fonctionnalités", name:"features_wanted", required:false}
+  { title: "Besoins", fields: [
+    {type: "text", label:"Clients", name:"clients", required:true},
+    {type: "textarea", label:"Pertes de temps", name:"pain_points", required:true},
+    {type: "textarea", label:"Fonctionnalités", name:"features_wanted", required:false}
   ]},
-  { title: "Intérêt pour le SaaS", fields: [
-    {type: "text", placeholder : '', label:"Prêt à utiliser ?", name:"interest", required:true},
-    {type: "text", placeholder : '', label:"Budget (€)", name:"budget", required:true},
-    {type: "textarea", placeholder : '', label:"Déclencheur", name:"conversion_trigger", required:false}
+  { title: "Intérêt", fields: [
+    {type: "text", label:"Prêt à utiliser ?", name:"interest", required:true},
+    {type: "text", label:"Budget (€)", name:"budget", required:true},
+    {type: "textarea", label:"Déclencheur", name:"conversion_trigger", required:false}
   ]},
 ];
 
+let currentStep = 0;
+const progressbar = document.getElementById('progressbar');
+const formFields = document.getElementById('form-fields');
+const errorMsg = document.getElementById('error-msg');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const formContainer = document.getElementById('form-container');
+const finalMessage = document.getElementById('final-message');
 
+function renderProgressbar() {
+  progressbar.innerHTML = '';
+  stepsData.forEach((step, i) => {
+    const li = document.createElement('li');
+    li.textContent = step.title;
+    li.classList.toggle('active', i <= currentStep);
+    progressbar.appendChild(li);
+  });
+}
 
-  let currentStep = 0;
-  const progressbar = document.getElementById('progressbar');
-  const formFields = document.getElementById('form-fields');
-  const errorMsg = document.getElementById('error-msg');
-  const prevBtn = document.getElementById('prev-btn');
-  const nextBtn = document.getElementById('next-btn');
-  const formContainer = document.getElementById('form-container');
-  const finalMessage = document.getElementById('final-message');
+function renderFields() {
+  formFields.innerHTML = '';
+  const fields = stepsData[currentStep].fields;
+  fields.forEach((f, idx) => {
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('form-group');
 
-  function renderProgressbar() {
-    progressbar.innerHTML = '';
-    stepsData.forEach((step, i) => {
-      const li = document.createElement('li');
-      li.textContent = step.title;
-      li.classList.toggle('active', i <= currentStep);
-      progressbar.appendChild(li);
-    });
-  }
+    let fieldElem;
+    if(f.type === 'text' || f.type === 'email') {
+      fieldElem = document.createElement('input');
+      fieldElem.type = f.type;
+      fieldElem.name = f.name;
+      if(f.required) fieldElem.required = true;
+    } else if(f.type === 'textarea') {
+      fieldElem = document.createElement('textarea');
+      fieldElem.name = f.name;
+    }
 
-  function renderFields() {
-    formFields.innerHTML = '';
-    const fields = stepsData[currentStep].fields;
-    fields.forEach(f => {
-      const wrapper = document.createElement('div');
-      wrapper.classList.add('form-group');
+    const label = document.createElement('label');
+    label.textContent = f.label;
+    label.htmlFor = f.name;
 
-      let fieldElem;
-      if(f.type === 'text' || f.type === 'email') {
-        fieldElem = document.createElement('input');
-        fieldElem.type = f.type;
-        fieldElem.placeholder = f.placeholder;
-        fieldElem.name = f.name;
-        if(f.required) fieldElem.required = true;
-      } else if(f.type === 'textarea') {
-        fieldElem = document.createElement('textarea');
-        fieldElem.placeholder = f.placeholder;
-        fieldElem.name = f.name;
-      }
+    wrapper.appendChild(fieldElem);
+    wrapper.appendChild(label);
+    formFields.appendChild(wrapper);
 
-      const label = document.createElement('label');
-      label.textContent = f.label;
-      label.htmlFor = f.name;
+    // Autofocus sur le premier champ
+    if(idx === 0) setTimeout(() => fieldElem.focus(), 50);
+  });
+  errorMsg.textContent = '';
+}
 
-      wrapper.appendChild(fieldElem);
-      wrapper.appendChild(label);
-      formFields.appendChild(wrapper);
-    });
-    errorMsg.textContent = '';
-  }
-
-  function validateStep() {
-    const inputs = formFields.querySelectorAll('input, textarea');
-    for(let input of inputs) {
-      if(input.required && !input.value.trim()) {
-        errorMsg.textContent = `Veuillez remplir le champ ${input.nextElementSibling.textContent}` 
+function validateStep() {
+  const inputs = formFields.querySelectorAll('input, textarea');
+  for(let input of inputs) {
+    if(input.required && !input.value.trim()) {
+      errorMsg.textContent = `Veuillez remplir le champ ${input.nextElementSibling.textContent}`;
+      return false;
+    }
+    if(input.type === 'email' && input.value.trim()) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if(!re.test(input.value.trim())) {
+        errorMsg.textContent = "Veuillez saisir une adresse email valide.";
         return false;
       }
-      if(input.type === 'email' && input.value.trim()) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if(!re.test(input.value.trim())) {
-          errorMsg.textContent = "Veuillez saisir une adresse email valide.";
-          return false;
-        }
-      }
     }
-    errorMsg.textContent = '';
-    return true;
   }
+  errorMsg.textContent = '';
+  return true;
+}
 
-  nextBtn.addEventListener('click', () => {
-    if(!validateStep()) return;
-    if(currentStep < stepsData.length - 1) {
-      currentStep++;
-      renderProgressbar();
-      renderFields();
-      prevBtn.disabled = false;
-      if(currentStep === stepsData.length - 1) {
-        nextBtn.textContent = 'Terminer ✅';
-      } else {
-        nextBtn.textContent = 'Suivant ➡';
-      }
+nextBtn.addEventListener('click', () => {
+  if(!validateStep()) return;
+  if(currentStep < stepsData.length - 1) {
+    currentStep++;
+    renderProgressbar();
+    renderFields();
+    prevBtn.disabled = false;
+    if(currentStep === stepsData.length - 1) {
+      nextBtn.textContent = 'Terminer ✅';
     } else {
-      formContainer.style.display = 'none';
-      finalMessage.style.display = 'flex';
-    }
-  });
-
-  prevBtn.addEventListener('click', () => {
-    if(currentStep > 0) {
-      currentStep--;
-      renderProgressbar();
-      renderFields();
-      nextBtn.disabled = false;
       nextBtn.textContent = 'Suivant ➡';
-      if(currentStep === 0) prevBtn.disabled = true;
     }
-  });
+  } else {
+    formContainer.style.display = 'none';
+    finalMessage.style.display = 'flex';
+  }
+});
 
-  renderProgressbar();
-  renderFields();
+prevBtn.addEventListener('click', () => {
+  if(currentStep > 0) {
+    currentStep--;
+    renderProgressbar();
+    renderFields();
+    nextBtn.disabled = false;
+    nextBtn.textContent = 'Suivant ➡';
+    if(currentStep === 0) prevBtn.disabled = true;
+  }
+});
+
+renderProgressbar();
+renderFields();
 </script>
 
 </body>
