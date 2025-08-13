@@ -5,24 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Devenez Coach Beta-Testeur</title>
   <style>
+
+
+:root {
+  /* Couleurs principales */
+  --color-bg: #0a0f1f;          /* Fond général plus sombre */
+  --color-container: #121827;   /* Conteneur légèrement plus clair que le fond */
+  --color-text: #e0e6f0;        /* Texte principal */
+  --color-text-light: #a1acb8;  /* Texte secondaire */
+  --color-border: #2e3a50;      /* Bordures douces */
+  --color-input-bg: #1f293b;    /* Fond des inputs */
+  --color-accent: #4f9aff;      /* Couleur principale accentuée */
+  --color-accent-hover: #1e7bff;/* Accent au survol */
+  --color-success: #28d78b;     /* Couleur succès */
+  --color-error: #f36b6b;       /* Couleur erreur */
+
+  /* Rayons et ombres */
+  --radius: 8px;
+  --shadow: 0 10px 35px rgba(0, 0, 0, 0.5);
+
+  /* Typo et tailles */
+  --font-size-title: 1.9rem;
+  --font-size-text: 1rem;
+  --spacing: 20px;
+}
+
+
+
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #e0e7ff, #f9fafb);
+      background: var(--color-bg);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 20px;
-      color: #2e3a59;
+      color: var(--color-text);
     }
     .container {
-      background: #fff;
+      background: var(--color-container);
       max-width: 520px;
       width: 100%;
       padding: 40px 35px;
-      border-radius: 0px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       animation: appear 0.6s ease forwards;
     }
     @keyframes appear {
@@ -33,12 +61,12 @@
       font-weight: 700;
       font-size: 1.8rem;
       margin-bottom: 15px;
-      color: #1a202c;
+      color: #f8fafc;
       text-align: center;
       line-height: 1.3;
     }
     p.description {
-      color: #4a5568;
+      color: #94a3b8;
       font-size: 1rem;
       margin-bottom: 35px;
       text-align: center;
@@ -58,7 +86,7 @@
       flex: 1;
       text-align: center;
       font-size: 0.7rem;
-      color: #a0aec0;
+      color: #64748b;
       position: relative;
       word-wrap: break-word;
     }
@@ -68,12 +96,12 @@
       width: 32px;
       height: 32px;
       line-height: 32px;
-      border: 1px solid #cbd5e0;
+      border: 1px solid #475569;
       display: block;
       margin: 0 auto 8px;
       border-radius: 50%;
-      background: #f7fafc;
-      color: #cbd5e0;
+      background: #334155;
+      color: #94a3b8;
       font-weight: 700;
       transition: all 0.3s ease;
     }
@@ -82,20 +110,20 @@
       position: absolute;
       width: 100%;
       height: 2px;
-      background: #cbd5e0;
+      background: #475569;
       top: 16px;
       left: -50%;
       z-index: -1;
     }
     .progressbar li:first-child::after { content: none; }
-    .progressbar li.active { color: #2563eb; }
+    .progressbar li.active { color: #3b82f6; }
     .progressbar li.active::before {
-      border-color: #2563eb;
-      background: #2563eb;
+      border-color: #3b82f6;
+      background: #3b82f6;
       color: white;
     }
     .progressbar li.active + li::after {
-      background: #2563eb;
+      background: #3b82f6;
     }
 
     /* Form fields */
@@ -108,26 +136,28 @@
     label {
       position: absolute;
       top: 14px;
+      background: transparent;
       left: 16px;
       font-size: 1rem;
-      color: #718096;
+      color: #94a3b8;
       pointer-events: none;
       transition: 0.2s ease all;
     }
     input, textarea {
       width: 100%;
       padding: 14px 16px;
-      border: 1px solid #e2e8f0;
-      border-radius: 0px;
+      border: 1px solid #475569;
+      border-radius: 6px;
       font-size: 1rem;
-      background: #fafafa;
-      color: #2d3748;
+      background: #334155;
+      color: #f1f5f9;
       transition: border-color 0.3s ease, background 0.3s ease;
       line-height: 1.4;
     }
     input:focus, textarea:focus {
-      border-color: #2563eb;
-      background: #fff;
+      border-color: #3b82f6;
+      background: #1e293b;
+      outline: none;
     }
     input:focus + label,
     input:not(:placeholder-shown) + label,
@@ -136,8 +166,8 @@
       top: -8px;
       left: 12px;
       font-size: 0.85rem;
-      color: #2563eb;
-      background: white;
+      color: #3b82f6;
+      background: #1e293b;
       padding: 0 4px;
     }
 
@@ -151,29 +181,29 @@
     }
     button {
       flex: 1 1 45%;
-      background: #2563eb;
+      background: var(--color-accent);
       border: none;
       color: white;
       padding: 16px;
       font-weight: 700;
       font-size: 1rem;
-      border-radius: 0px;
+      border-radius: 6px;
       cursor: pointer;
       transition: background 0.3s ease, transform 0.2s ease;
     }
     button:hover:not(:disabled) {
-      background: #1e4ed8;
+      background: var(--color-accent-hover);
       transform: translateY(-2px);
     }
     button:disabled {
-      background: #a0aec0;
+      background: #475569;
       cursor: not-allowed;
       box-shadow: none;
     }
 
     /* Error message */
     .error {
-      color: #dc2626;
+      color: #f87171;
       font-size: 0.9rem;
       text-align: center;
       min-height: 20px;
@@ -191,37 +221,37 @@
     }
     .final-message .icon {
       font-size: 3rem;
-      color: #16a34a;
+      color: #22c55e;
       margin-bottom: 15px;
     }
     .final-message h2 {
       font-size: 1.5rem;
       margin-bottom: 10px;
-      color: #1a202c;
+      color: #f8fafc;
     }
     .final-message p {
-      color: #4a5568;
+      color: #94a3b8;
       font-size: 1rem;
       margin-bottom: 20px;
       line-height: 1.5;
     }
     .final-message a {
       display: inline-block;
-      background: #2563eb;
+      background: #3b82f6;
       color: #fff;
       padding: 12px 20px;
-      border-radius: 0px;
+      border-radius: 6px;
       font-weight: 600;
       text-decoration: none;
       transition: background 0.3s ease;
     }
-    .final-message a:hover { background: #1e4ed8; }
+    .final-message a:hover { background: #2563eb; }
 
     /* Mobile */
     @media (max-width: 480px) {
-      body { background: #fff;   }
+      body { background: #0f172a; }
       .container { box-shadow: none; padding: 25px 20px; }
-      h1 { font-size: 2rem; }
+      h1 { font-size: 1.6rem; }
       .buttons { flex-direction: column; }
       button { flex: 1 1 100%; }
     }
